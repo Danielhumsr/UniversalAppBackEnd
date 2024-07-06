@@ -1,0 +1,31 @@
+package UniversalApp.LogIn.ApiRest;
+
+import UniversalApp.LogIn.Controller.UserController;
+import UniversalApp.LogIn.Model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping(value = "/logIn", produces = MediaType.APPLICATION_JSON_VALUE)
+public class ApiRest {
+    @Autowired
+    UserController userController;
+
+    //URL: /logIn/listar
+   @GetMapping("/listar")
+    public List<User> listar(){
+        return userController.ListarUsuarios();
+    }
+
+    //URL: /logIn/logIn?userLogin=angee
+    @GetMapping("/logIn")
+    public User logIn(@RequestParam String userLogin){
+       return userController.Login(userLogin);
+    }
+}

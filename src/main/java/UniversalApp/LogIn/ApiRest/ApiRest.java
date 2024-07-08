@@ -4,13 +4,12 @@ import UniversalApp.LogIn.Controller.UserController;
 import UniversalApp.LogIn.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//https://www.baeldung.com/spring-cors
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping(value = "/logIn", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ApiRest {
@@ -20,7 +19,7 @@ public class ApiRest {
     //URL: /logIn/listar
    @GetMapping("/listar")
     public List<User> listar(){
-        return userController.ListarUsuarios();
+       return userController.ListarUsuarios();
     }
 
     //URL: /logIn/logIn?userLogin=angee

@@ -22,5 +22,6 @@ public class UserService implements IUserService{
         return(List<User>) userRepository.getUserByUsername(username);
     }
 
+    public User saveUser(User user){ return(User) userRepository.save(user);}
 
 }

@@ -21,8 +21,11 @@ public class UserController {
     public List<User> ListarUsuarios(){
         List<User> ListaUsusarios = new ArrayList<>();
         ListaUsusarios = userService.listarUsuarios();
-        System.out.println(ListaUsusarios);
         return ListaUsusarios;
+    }
+
+    public User saveUser(User user){
+        return userService.saveUser(user);
     }
 
     public User Login(String loginuser){

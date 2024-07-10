@@ -27,4 +27,12 @@ public class ApiRest {
     public User logIn(@RequestParam String userLogin){
        return userController.Login(userLogin);
     }
+
+    //URL: /logIn/insertarUsuario
+    @PostMapping("/insertarUsuario")
+    public String insertarUsuario(@RequestBody User user){
+       User newUser = new User();
+       newUser =  userController.saveUser(user);
+       return newUser.toString();
+    }
 }

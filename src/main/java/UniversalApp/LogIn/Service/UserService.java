@@ -13,13 +13,14 @@ public class UserService implements IUserService{
     @Autowired
     UserRepository userRepository;
 
+
     @Override
     public List<User> listarUsuarios(){
         return(List<User>) userRepository.findAll();
     }
 
-    public List<User> logInUser(String username){
-        return(List<User>) userRepository.getUserByUsername(username);
+    public User getUserByUsername(String username){
+        return  userRepository.findUsersByUsername(username);
     }
 
     public User saveUser(User user){ return(User) userRepository.save(user);}

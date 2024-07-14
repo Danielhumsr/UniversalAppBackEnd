@@ -1,24 +1,24 @@
 package UniversalApp.LogIn.Controller;
 
-import UniversalApp.LogIn.DTO.ResponseDTO;
+import UniversalApp.LogIn.DTO.ObjetListResponseDTO;
+import UniversalApp.LogIn.DTO.ObjetResponseDTO;
 import UniversalApp.LogIn.Model.User;
 import UniversalApp.LogIn.Security.JwtService;
 import UniversalApp.LogIn.Service.IUserService;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 
 @Controller
 @RequiredArgsConstructor
@@ -35,39 +35,40 @@ public class UserController {
     AuthenticationManager authenticationManager;
 
 
-    public List<User> ListarUsuarios(){
-        List<User> ListaUsusarios = new ArrayList<>();
-        ListaUsusarios = userService.listarUsuarios();
-        return ListaUsusarios;
+    public ResponseEntity ListarUsuarios(){
+        List<User> listaUsusarios = new ArrayList<>();
+        listaUsusarios = userService.listarUsuarios();
+        ObjetListResponseDTO objetListResponseDTO = new ObjetListResponseDTO("OK", Collections.singletonList(listaUsusarios));
+        return  new ResponseEntity<>(objetListResponseDTO, HttpStatus.OK);
     }
 
-    public ResponseDTO saveUser(User user){
+    public ResponseEntity saveUser(User user){
         User newUser = user;
         newUser.setPassword(passwordEncoder.encode(user.getPassword()));
         try {
             newUser = userService.saveUser(newUser);
-            String token= jwtService.getToken(user);
-            ResponseDTO response = new ResponseDTO(token);
-            return response;
+            String token= jwtService.getToken(newUser);
+            ObjetResponseDTO response = new ObjetResponseDTO(token, user);
+            return new ResponseEntity<>(response, HttpStatus.OK);
         }catch (Exception e){
-            return  new ResponseDTO(e.getMessage());
+            System.out.println(e.getMessage());
+            return  new ResponseEntity<>(new ObjetResponseDTO("Problemas con el servicio", null) , HttpStatus.BAD_REQUEST);
 
         }
-
-
-
     }
 
-    public ResponseDTO Login(User loginuser) {
+
+    public ResponseEntity Login(User loginuser) {
 
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginuser.getUsername(), loginuser.getPassword()));
             UserDetails user=userService.getUserByUsername(loginuser.getUsername());
             String token=jwtService.getToken(user);
-            return new ResponseDTO(token);
+            ObjetResponseDTO response =  new ObjetResponseDTO(token, loginuser);
+            return  new ResponseEntity<>(response, HttpStatus.OK);
         }catch(Exception e) {
-            System.out.println(e);
-            return new ResponseDTO(e.getMessage());
+            System.out.println(e.getMessage());
+            return new ResponseEntity<>(new ObjetResponseDTO("Problemas para hacer el LogIn", null) , HttpStatus.BAD_REQUEST);
         }
 
 

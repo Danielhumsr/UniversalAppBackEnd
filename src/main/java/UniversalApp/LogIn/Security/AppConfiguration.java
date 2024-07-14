@@ -38,7 +38,8 @@ public class AppConfiguration {
         return authProvider;
     }
 
-    private UserDetailsService userDetailsService() {
+    @Bean
+    public UserDetailsService userDetailsService() {
         return  username -> {
             try {
                return iUserService.getUserByUsername(username);
@@ -48,7 +49,8 @@ public class AppConfiguration {
         };
 
     }
-    private PasswordEncoder passwordEncoder() {
+    @Bean
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 }

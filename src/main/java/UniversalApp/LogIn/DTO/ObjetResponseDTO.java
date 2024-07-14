@@ -9,7 +9,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class ResponseDTO {
+public class ObjetResponseDTO {
 
-    String token;
+    String respuesta;
+
+    Object ObjetoRespuiesta;
 }

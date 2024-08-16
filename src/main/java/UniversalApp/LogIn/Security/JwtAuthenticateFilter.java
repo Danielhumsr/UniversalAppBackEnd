@@ -51,9 +51,9 @@ public class JwtAuthenticateFilter extends OncePerRequestFilter {
     }
 
     private String getTokenFromRequest(HttpServletRequest request) {
-        System.out.println("entro a validar token del header--------------------------------------------------------------"+request);
+       // System.out.println("entro a validar token del header--------------------------------------------------------------"+request);
         final String authHeader = request.getHeader(HttpHeaders.AUTHORIZATION);
-        System.out.println("entro a validar token del header--------------------------------------------------------------"+authHeader);
+       // System.out.println("entro a validar token del header--------------------------------------------------------------"+authHeader);
         if (authHeader != null && authHeader.startsWith("Bearer ")) {
             return authHeader.substring(7);
         }else{

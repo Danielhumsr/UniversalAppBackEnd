@@ -29,6 +29,7 @@ public class UserController {
     @Autowired
     JwtService jwtService;
 
+
     PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
     @Autowired
@@ -53,13 +54,11 @@ public class UserController {
         }catch (Exception e){
             System.out.println(e.getMessage());
             return  new ResponseEntity<>(new ObjetResponseDTO("Problemas con el servicio", null) , HttpStatus.BAD_REQUEST);
-
         }
     }
 
 
     public ResponseEntity Login(User loginuser) {
-
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginuser.getUsername(), loginuser.getPassword()));
             UserDetails user=userService.getUserByUsername(loginuser.getUsername());
@@ -70,8 +69,15 @@ public class UserController {
             System.out.println(e.getMessage());
             return new ResponseEntity<>(new ObjetResponseDTO("Problemas para hacer el LogIn", null) , HttpStatus.BAD_REQUEST);
         }
+    }
 
-
-
+    public ResponseEntity ValidateToken(String tokenRequiest) {
+        User user = new User();
+        String token = tokenRequiest.substring(7);
+        String userFronToken = jwtService.getUsernameFromToken(token);
+        //System.out.println(userFronToken+"------------------- Usuario from Token");
+        user.setUsername(userFronToken);
+        ObjetResponseDTO response =  new ObjetResponseDTO("Token Valido", user);
+        return new ResponseEntity<>(response, HttpStatus.OK);
     }
 }

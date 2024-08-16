@@ -9,6 +9,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials= "true")
 @RestController
 @RequestMapping(value = "/module/user", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -31,9 +33,8 @@ public class ApiRestProtecte {
 
     // URL: /module/user/ValidateToken
     @PostMapping("/ValidateToken")
-    public ResponseEntity validateToken(@RequestBody User user) {
-        System.out.println(user.getUsername()+"-------------------------------------------------------");
-        ObjetResponseDTO responseDTO = new ObjetResponseDTO("Token Valido", user);
-        return new ResponseEntity<>(responseDTO, HttpStatus.OK);
+    public ResponseEntity validateToken(@RequestHeader("authorization") String headers) {
+        //System.out.println(headers+"-------------------------------------------------------");
+        return userController.ValidateToken(headers);
     }
 }

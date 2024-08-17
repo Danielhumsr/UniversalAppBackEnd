@@ -13,5 +13,5 @@ public class ObjetResponseDTO {
 
     String respuesta;
 
-    Object ObjetoRespuiesta;
+    Object ObjetoRespuesta;
 }

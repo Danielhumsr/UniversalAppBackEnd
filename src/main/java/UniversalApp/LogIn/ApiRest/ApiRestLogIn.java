@@ -8,13 +8,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 //https://www.baeldung.com/spring-cors
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials= "true")
 @RestController
 @RequestMapping(value = "/logIn", produces = MediaType.APPLICATION_JSON_VALUE)
-public class ApiRest {
+public class ApiRestLogIn {
     @Autowired
     UserController userController;
 

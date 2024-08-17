@@ -38,6 +38,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(authRequest ->
                         authRequest
                                 .requestMatchers("/logIn/**").permitAll()
+                                .requestMatchers("/prueba/**").permitAll()
                                 .anyRequest().authenticated())
                 .sessionManagement(sessionManager->
                         sessionManager

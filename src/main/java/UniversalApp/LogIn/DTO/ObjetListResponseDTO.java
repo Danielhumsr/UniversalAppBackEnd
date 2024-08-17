@@ -15,5 +15,5 @@ public class ObjetListResponseDTO {
 
     String respuesta;
 
-    List<Object> ListaObjetoRespuiesta;
+    List<Object> ListaObjetoRespuesta;
 }

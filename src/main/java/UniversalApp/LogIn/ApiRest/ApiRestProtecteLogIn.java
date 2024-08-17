@@ -2,19 +2,16 @@ package UniversalApp.LogIn.ApiRest;
 
 import UniversalApp.LogIn.Controller.UserController;
 import UniversalApp.LogIn.DTO.ObjetResponseDTO;
-import UniversalApp.LogIn.Model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
-
 @CrossOrigin(origins = "http://localhost:3000", allowCredentials= "true")
 @RestController
 @RequestMapping(value = "/module/user", produces = MediaType.APPLICATION_JSON_VALUE)
-public class ApiRestProtecte {
+public class ApiRestProtecteLogIn {
 
     @Autowired
     UserController userController;

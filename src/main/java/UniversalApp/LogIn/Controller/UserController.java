@@ -1,7 +1,7 @@
 package UniversalApp.LogIn.Controller;
 
-import UniversalApp.LogIn.DTO.ObjetListResponseDTO;
-import UniversalApp.LogIn.DTO.ObjetResponseDTO;
+import UniversalApp.Global.DTO.ObjetListResponseDTO;
+import UniversalApp.Global.DTO.ObjetResponseDTO;
 import UniversalApp.LogIn.Model.User;
 import UniversalApp.LogIn.Security.JwtService;
 import UniversalApp.LogIn.Service.IUserService;

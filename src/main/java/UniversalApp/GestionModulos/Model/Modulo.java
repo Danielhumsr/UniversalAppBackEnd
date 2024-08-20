@@ -10,12 +10,12 @@ import lombok.*;
 @Setter
 @Getter
 @ToString
-public class Modulos {
+public class Modulo {
 
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private long id;
 
     @Column(name = "NOMBRE_MODULO")
     private String nombreModulo;

@@ -1,17 +1,19 @@
-package UniversalApp.LogIn.DTO;
+package UniversalApp.Global.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Setter
 @Getter
-public class ObjetResponseDTO {
+public class ObjetListResponseDTO {
 
     String respuesta;
 
-    Object ObjetoRespuesta;
+    List<Object> ListaObjetoRespuesta;
 }

@@ -1,7 +1,7 @@
 package UniversalApp.LogIn.ApiRest;
 
 import UniversalApp.LogIn.Controller.UserController;
-import UniversalApp.LogIn.DTO.ObjetResponseDTO;
+import UniversalApp.Global.DTO.ObjetResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;

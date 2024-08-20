@@ -9,3 +9,4 @@ INSERT INTO USUARIO (ID, USER_NAME, PASWORD, ROL) VALUES (default, 'daniel', '$2
 INSERT INTO MODULOS (ID, NOMBRE_MODULO, DESCRIPCION_MODULO, URL) VALUES (default, 'Gestion de Usuarios', 'Modulo donde se gestionan los usuarios.', '/GestionUsuarios');
 INSERT INTO MODULOS (ID, NOMBRE_MODULO, DESCRIPCION_MODULO, URL) VALUES (default, 'Tareas', 'Modulo donde se gestion de tareas.', '/Tareas');
 INSERT INTO MODULOS (ID, NOMBRE_MODULO, DESCRIPCION_MODULO, URL) VALUES (default, 'Inventario', 'Modulo donde se gestion de tareas.', '/Inventario');
+INSERT INTO MODULOS (ID, NOMBRE_MODULO, DESCRIPCION_MODULO, URL) VALUES (default, 'Citas', 'Modulo donde se gestion Las citas.', '/Citas');

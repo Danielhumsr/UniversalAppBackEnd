@@ -5,6 +5,7 @@ import UniversalApp.Global.DTO.ObjetResponseDTO;
 import UniversalApp.LogIn.Model.User;
 import UniversalApp.LogIn.Security.JwtService;
 import UniversalApp.LogIn.Service.IUserService;
+import UniversalApp.LogIn.Service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,9 @@ import java.util.List;
 @Controller
 @RequiredArgsConstructor
 public class UserController {
+
+    private final String idEstadoActivo= "1";
+
     @Autowired
     IUserService userService;
 
@@ -45,6 +49,7 @@ public class UserController {
 
     public ResponseEntity saveUser(User user){
         User newUser = user;
+        newUser.setEstado(idEstadoActivo);
         newUser.setPassword(passwordEncoder.encode(user.getPassword()));
         try {
             newUser = userService.saveUser(newUser);

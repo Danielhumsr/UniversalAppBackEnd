@@ -15,6 +15,7 @@ public class UsuarioRolModulo {
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     @Column(name = "ID_USUARIO")
     private long idUsuario;
 

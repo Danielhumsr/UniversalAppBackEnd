@@ -29,8 +29,12 @@ public class User implements UserDetails {
     @Column(name = "PASWORD")
     private String password;
 
-    @Column(name = "rol")
-    private String rol;
+    @Column(name = "EMAIL")
+    private String email;
+
+    @Column(name = "ESTADO")
+    private String estado;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

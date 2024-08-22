@@ -67,12 +67,16 @@ public class UserController {
         try {
             authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginuser.getUsername(), loginuser.getPassword()));
             UserDetails user=userService.getUserByUsername(loginuser.getUsername());
+            User userState = userService.getUserByUsername(loginuser.getUsername());
+            if(userState.getEstado().equals("2")){
+                return new ResponseEntity<>(new ObjetResponseDTO("Usuario sin acceso", null) , HttpStatus.BAD_REQUEST);
+            }
             String token=jwtService.getToken(user);
             ObjetResponseDTO response =  new ObjetResponseDTO(token, loginuser);
             return  new ResponseEntity<>(response, HttpStatus.OK);
         }catch(Exception e) {
             System.out.println(e.getMessage());
-            return new ResponseEntity<>(new ObjetResponseDTO("Problemas para hacer el LogIn", null) , HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(new ObjetResponseDTO("Inicio de sesion Invalido", null) , HttpStatus.BAD_REQUEST);
         }
     }
 

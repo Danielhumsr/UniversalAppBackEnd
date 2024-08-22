@@ -2,7 +2,7 @@
 
 INSERT INTO USUARIO (ID, USER_NAME, PASWORD, EMAIL, ESTADO) VALUES (default, 'kaksuma', '$2a$10$lmY7BREak9D.tgniyjE84uE139VZkoveWx9omld22qYfDKt9fAojS', 'admin', '1');
 INSERT INTO USUARIO (ID, USER_NAME, PASWORD, EMAIL, ESTADO) VALUES (default, 'angee', '$2a$10$lmY7BREak9D.tgniyjE84uE139VZkoveWx9omld22qYfDKt9fAojS', 'admin','1');
-INSERT INTO USUARIO (ID, USER_NAME, PASWORD, EMAIL, ESTADO) VALUES (default, 'backtome', '$2a$10$lmY7BREak9D.tgniyjE84uE139VZkoveWx9omld22qYfDKt9fAojS', 'admin','1');
+INSERT INTO USUARIO (ID, USER_NAME, PASWORD, EMAIL, ESTADO) VALUES (default, 'backtome', '$2a$10$lmY7BREak9D.tgniyjE84uE139VZkoveWx9omld22qYfDKt9fAojS', 'admin','2');
 INSERT INTO USUARIO (ID, USER_NAME, PASWORD, EMAIL, ESTADO) VALUES (default, 'daniel', '$2a$10$lmY7BREak9D.tgniyjE84uE139VZkoveWx9omld22qYfDKt9fAojS', 'admin','1');
 
 
